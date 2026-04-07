@@ -1,40 +1,37 @@
 package edu.cmu.cs.cs214.rec04;
 
-public class InheritanceSortedIntList  extends SortedIntList {
+public class InheritanceSortedIntList extends SortedIntList {
 
-	private int totalAdded;
-	
-	public InheritanceSortedIntList () {
-		super();
-		totalAdded = 0;
-	}
+    private int totalAdded;
 
-	@Override
-	public boolean add(int num) {
-        arr.add(num);
-		count++;
-		totalAdded++;
-		
-		return true;
-
-	}
-
-	@Override
-	public boolean addAll(IntegerList list) {
-
-        boolean success = false;
-
-        for (int i = 0; i < list.size(); i++)
-        {
-            success |= arr.add(list.get(i));
-        }
-        
-        totalAdded += list.size();
-        return success;
+    /**
+     * Constructs an empty InheritanceSortedIntList with totalAdded initialized to 0.
+     */
+    public InheritanceSortedIntList() {
+        super();
+        totalAdded = 0;
     }
-	
-	public int getTotalAdded () {
-		return totalAdded;
-	}
 
+    /**
+     * Adds the specified int to the list, maintaining sorted order, and
+     * increments the totalAdded counter.
+     *
+     * @param num an integer to be added to the list
+     * @return true if the list is changed as a result of the call
+     */
+    @Override
+    public boolean add(int num) {
+        totalAdded++;
+        return super.add(num);
+    }
+
+    /**
+     * Returns the total number of integers that have been added to this list
+     * since it was created (i.e., total attempted insertions, not current size).
+     *
+     * @return the total number of add attempts made on this list
+     */
+    public int getTotalAdded() {
+        return totalAdded;
+    }
 }
